@@ -120,15 +120,15 @@ extension AnimatedTextView: UITextViewDelegate {
         if let maxHeight = maximumHeightOfMultilineLabel, textView.contentSize.height >= maxHeight {
 
             // Check if the height constraint is not added, yet. Create and add it if so.
-            if heightConstraintForMultilineLabel == nil {
+            if maxHeightConstraintForMultilineLabel == nil {
 
                 // Enable scrolling:
                 textView.isScrollEnabled = true
 
                 // Set new maximum height as current height constraint. Since the maximum allowed height is already reached, this constraint defines the current height of the text input to be the maximum height:
-                heightConstraintForMultilineLabel = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: maxHeight)
-                heightConstraintForMultilineLabel!.identifier = "CurrentHeightOfTextView"
-                textView.addConstraint(heightConstraintForMultilineLabel!)
+                maxHeightConstraintForMultilineLabel = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: maxHeight)
+                maxHeightConstraintForMultilineLabel!.identifier = "CurrentHeightOfTextView"
+                textView.addConstraint(maxHeightConstraintForMultilineLabel!)
 
                 // Scroll to the bottom as the user may enter even more text and want to see where the text ist put.
                 let bottomRect = CGRect(x: 0, y: textView.contentSize.height-1, width: textView.contentSize.width, height: 1)
@@ -137,9 +137,9 @@ extension AnimatedTextView: UITextViewDelegate {
         }
         else {
             // Remove the constraint and set it to nil in order to avoid re-adding it later.
-            if let existingConstraint = heightConstraintForMultilineLabel {
+            if let existingConstraint = maxHeightConstraintForMultilineLabel {
                 textView.removeConstraint(existingConstraint)
-                heightConstraintForMultilineLabel = nil
+                maxHeightConstraintForMultilineLabel = nil
 
                 // Disable scrolling:
                 textView.isScrollEnabled = false

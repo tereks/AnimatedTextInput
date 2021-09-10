@@ -29,7 +29,7 @@ public struct AnimatedTextInputFieldConfigurator {
         case .selection:
             return AnimatedTextInputSelectionConfigurator.generate()
         case .multiline(let minHeight, let maxHeight):
-            return AnimatedTextInputMultilineConfigurator.generate(minHeight; minHeight, maxHeight: maxHeight)
+            return AnimatedTextInputMultilineConfigurator.generate(minHeight: minHeight, maxHeight: maxHeight)
         case .generic(let textInput):
             return textInput
         case .customSelection(let isRightViewEnabled, let rightViewImage):
