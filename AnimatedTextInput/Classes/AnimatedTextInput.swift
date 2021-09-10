@@ -1,6 +1,6 @@
 import UIKit
 
-@objc public protocol AnimatedTextInputDelegate: class {
+@objc public protocol AnimatedTextInputDelegate: AnyObject {
     @objc optional func animatedTextInputDidBeginEditing(animatedTextInput: AnimatedTextInput)
     @objc optional func animatedTextInputDidEndEditing(animatedTextInput: AnimatedTextInput)
     @objc optional func animatedTextInputDidChange(animatedTextInput: AnimatedTextInput)
@@ -605,7 +605,7 @@ public extension TextInput where Self: UIView {
     }
 }
 
-public protocol TextInputDelegate: class {
+public protocol TextInputDelegate: AnyObject {
     func textInputDidBeginEditing(textInput: TextInput)
     func textInputDidEndEditing(textInput: TextInput)
     func textInputDidChange(textInput: TextInput)
